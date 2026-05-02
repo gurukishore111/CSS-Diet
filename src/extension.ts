@@ -155,25 +155,22 @@ async function performScan(): Promise<void> {
     if (byStatus.UNUSED.length > 0) {
       log(outputChannel, `\n❌ UNUSED (${byStatus.UNUSED.length}):`);
       for (const r of byStatus.UNUSED) {
-        const rel = vscode.workspace.asRelativePath(r.cssClass.filePath);
-        log(outputChannel, `   .${r.cssClass.name}  →  ${rel}:${r.cssClass.line}`);
+        log(outputChannel, `   .${r.cssClass.name}  →  ${r.cssClass.filePath}:${r.cssClass.line}`);
       }
     }
 
     if (byStatus.POSSIBLY_USED.length > 0) {
       log(outputChannel, `\n⚠️  POSSIBLY USED (${byStatus.POSSIBLY_USED.length}):`);
       for (const r of byStatus.POSSIBLY_USED) {
-        const rel = vscode.workspace.asRelativePath(r.cssClass.filePath);
         const hint = r.matchedPattern ? `  [matches "${r.matchedPattern.display}"]` : '';
-        log(outputChannel, `   .${r.cssClass.name}  →  ${rel}:${r.cssClass.line}${hint}`);
+        log(outputChannel, `   .${r.cssClass.name}  →  ${r.cssClass.filePath}:${r.cssClass.line}${hint}`);
       }
     }
 
     if (byStatus.USED.length > 0) {
       log(outputChannel, `\n✅ USED (${byStatus.USED.length}):`);
       for (const r of byStatus.USED) {
-        const rel = vscode.workspace.asRelativePath(r.cssClass.filePath);
-        log(outputChannel, `   .${r.cssClass.name}  →  ${rel}:${r.cssClass.line}`);
+        log(outputChannel, `   .${r.cssClass.name}  →  ${r.cssClass.filePath}:${r.cssClass.line}`);
       }
     }
 

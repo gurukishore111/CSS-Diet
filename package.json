@@ -11,6 +11,10 @@
     "Linters",
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gurukishore111/CSS-Diet.git"
+  },
   "icon": "icon.png",
   "keywords": [
     "css",
