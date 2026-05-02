@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Compilation
+out/
+*.vsix
+
+# IDE / VS Code
+.vscode-test/
+.history/
+*.log
+
+# Misc
+.DS_Store
+dist/
+build/

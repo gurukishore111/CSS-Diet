@@ -1,0 +1,117 @@
+{
+  "name": "css-diet",
+  "displayName": "CSS Diet",
+  "description": "Detect and highlight unused CSS classes across HTML, React, Vue, and Angular projects",
+  "version": "1.0.0",
+  "publisher": "Gurukishore",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "icon": "icon.png",
+  "keywords": [
+    "css",
+    "unused",
+    "classes",
+    "react",
+    "vue",
+    "angular",
+    "html",
+    "lint"
+  ],
+  "activationEvents": [
+    "onCommand:css-diet.scan",
+    "workspaceContains:**/*.css",
+    "workspaceContains:**/*.scss"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "css-diet.scan",
+        "title": "CSS Diet: Scan Project",
+        "category": "CSS Diet",
+        "icon": "$(search)"
+      },
+      {
+        "command": "css-diet.clearDiagnostics",
+        "title": "CSS Diet: Clear Diagnostics",
+        "category": "CSS Diet"
+      }
+    ],
+    "configuration": {
+      "title": "CSS Diet",
+      "properties": {
+        "cssDiet.enableDynamicDetection": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable detection of dynamically composed class names (e.g. template literals, ternaries)"
+        },
+        "cssDiet.ignoredPatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "node_modules",
+            "dist",
+            "build",
+            ".git",
+            "out"
+          ],
+          "description": "Glob patterns for directories/files to ignore during scanning"
+        },
+        "cssDiet.scanOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically re-scan when a file is saved"
+        },
+        "cssDiet.scanOnActivation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically scan when the extension activates"
+        },
+        "cssDiet.showInformationForPossiblyUsed": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show Information-level diagnostics for possibly-used classes"
+        }
+      }
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "command": "css-diet.scan",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.24.0",
+    "@babel/traverse": "^7.24.0",
+    "@babel/types": "^7.24.0",
+    "@types/babel__traverse": "^7.20.0",
+    "postcss": "^8.4.0",
+    "postcss-scss": "^4.0.0"
+  }
+}
