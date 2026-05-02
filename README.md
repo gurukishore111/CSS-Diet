@@ -5,8 +5,8 @@
 
 Eliminate dead CSS code. CSS Diet scans your entire workspace to detect unused CSS classes across HTML, React, Vue, and Angular — safely, fast, and with smart dynamic detection.
 
-![CSS Diet Preview](https://github.com/gurukishore111/CSS-Diet/raw/main/screenshots/demo.png)
 ![VS Code Marketplace Preview](https://github.com/gurukishore111/CSS-Diet/raw/main/screenshots/vs-code.png)
+![CSS Diet Preview](https://github.com/gurukishore111/CSS-Diet/raw/main/screenshots/demo.png)
 
 ## Core Features
 
