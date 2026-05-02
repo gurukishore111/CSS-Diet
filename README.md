@@ -1,6 +1,6 @@
 # CSS Diet 🥗
 
-[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/css-diet.css-diet?label=VS%20Code%20Marketplace&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=css-diet.css-diet)
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/Gurukishore.css-diet?label=VS%20Code%20Marketplace&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=Gurukishore.css-diet)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Eliminate dead CSS code. CSS Diet scans your entire workspace to detect unused CSS classes across HTML, React, Vue, and Angular — safely, fast, and with smart dynamic detection.
