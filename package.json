@@ -2,7 +2,7 @@
   "name": "css-diet",
   "displayName": "CSS Diet",
   "description": "Detect and highlight unused CSS classes across HTML, React, Vue, and Angular projects",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "Gurukishore",
   "engines": {
     "vscode": "^1.80.0"
@@ -27,7 +27,6 @@
     "lint"
   ],
   "activationEvents": [
-    "onCommand:css-diet.scan",
     "workspaceContains:**/*.css",
     "workspaceContains:**/*.scss"
   ],
@@ -95,9 +94,10 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run bundle -- --minify",
+    "bundle": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "compile": "npm run bundle -- --sourcemap",
+    "watch": "npm run bundle -- --sourcemap --watch",
     "pretest": "npm run compile",
     "lint": "eslint src --ext ts"
   },
@@ -106,9 +106,10 @@
     "@types/vscode": "^1.80.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "esbuild": "^0.28.0",
     "eslint": "^8.0.0",
-    "typescript": "^5.0.0",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
   },
   "dependencies": {
     "@babel/parser": "^7.24.0",
