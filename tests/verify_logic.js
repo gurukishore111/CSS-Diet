@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const Module = require('module');
 
-// Mock vscode before importing our logic
-global.vscode = {
+// Mock vscode module before importing our logic
+const vscodeMock = {
     workspace: {
         getConfiguration: () => ({
             get: (key, def) => def
@@ -17,6 +18,12 @@ global.vscode = {
             appendLine: (msg) => console.log(msg)
         })
     }
+};
+
+const originalLoad = Module._load;
+Module._load = function(request, parent, isMain) {
+    if (request === 'vscode') { return vscodeMock; }
+    return originalLoad.apply(this, arguments);
 };
 
 const { parseCSSClasses } = require('../out/parser/cssParser');

@@ -97,8 +97,9 @@
     "vscode:prepublish": "npm run bundle -- --minify",
     "bundle": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
     "compile": "npm run bundle -- --sourcemap",
+    "compile:tsc": "tsc --noEmit false",
     "watch": "npm run bundle -- --sourcemap --watch",
-    "pretest": "npm run compile",
+    "pretest": "npm run compile && npm run compile:tsc",
     "lint": "eslint src --ext ts"
   },
   "devDependencies": {
